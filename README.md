@@ -9,4 +9,4 @@ Caso queira ou precise utilizar a venv siga os passos apos clonar o repositorio:
 2 Ative a venv no terminal utilizando venv\Scripts\activate.bat para cmd ou venv\Scripts.activate.ps1 para powershell
 3 Execute o app.py com 'python app.py'
 
-OBS: o /path/ do requirements será o caminho no seu diretório
+OBS: o /path/ do requirements será o caminho no seu diretório clonado
