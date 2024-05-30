@@ -9,6 +9,7 @@ import pandasql as sql
 2 - Ultima data de adição ao carrinho de cada usuário
 3 - Categoria onde houve mais adições ao carrinho por usuário
 '''
+print(f'GENERATING FILES...')
 
 # armazenando os endpoints da API
 url_products = 'https://fakestoreapi.com/products'
@@ -81,7 +82,7 @@ SELECT DISTINCT
 ,DFU.Address
 ,MAX(DFU.Date) AS [Last addition to cart]
 ,DFP.Category AS [Most added category]
-,MAX(DFP.Sum) AS [Most added item]
+,MAX(DFP.Sum) AS Quantity
 FROM df_users_final DFU
 INNER JOIN df_products_final DFP ON DFU.UserID = DFP.UserID
 GROUP BY
@@ -102,7 +103,7 @@ SELECT DISTINCT
 ,DFU.UserName
 ,MAX(DFU.Date) AS [Last addition to cart]
 ,DFP.Category AS [Most added category]
-,MAX(DFP.Sum) AS [Most added item]
+,MAX(DFP.Sum) AS Quantity
 FROM df_users_final DFU
 INNER JOIN df_products_final DFP ON DFU.UserID = DFP.UserID
 GROUP BY
@@ -116,3 +117,4 @@ final_df_hide = sql.sqldf(final_query_hide)
 #Aqui optei por gerar 2 arquivos, o primeiro com as informações mais relevantes para análises e um segundo eliminando dados sensiveis do usuário
 final_df_full.to_csv('resultado_completo.csv', index = False)
 final_df_hide.to_csv('resultado.csv',index = False)
+print(f'DONE! CHECK OUT THE SCRIPT DIRECTORY')
